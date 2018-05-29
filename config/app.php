@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     |
     */
-    'name' => 'Project-setup',
+    'name' => 'ProjectSetup',
 
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ return [
     |
     */
     'providers' => [
-        App\Providers\AppServiceProvider::class,
+        \Zoutapps\Laravel\ProjectSetup\Providers\AppServiceProvider::class
     ],
 
 ];

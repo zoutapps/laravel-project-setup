@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Zoutapps\Laravel\ProjectSetup\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

@@ -1,10 +1,9 @@
 <?php
 
-namespace Tests;
+namespace Zoutapps\Laravel\ProjectSetup\Tests;
 
-use LaravelZero\Framework\Kernel;
-use LaravelZero\Framework\Application;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
+use LaravelZero\Framework\Kernel;
 
 trait CreatesApplication
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Zoutapps\Laravel\ProjectSetup\Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Support\Facades\Artisan;
+use Zoutapps\Laravel\ProjectSetup\Tests\TestCase;
 
 class InspiringCommandTest extends TestCase
 {

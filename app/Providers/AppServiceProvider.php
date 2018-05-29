@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Zoutapps\Laravel\ProjectSetup\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,6 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 }

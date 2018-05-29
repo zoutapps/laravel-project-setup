@@ -1,40 +1,46 @@
 <?php
 
-namespace Zoutapps\Laravel\ProjectSetup\App\Commands;
+namespace Zoutapps\Laravel\ProjectSetup\Commands\Dependency;
 
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
+use Zoutapps\Laravel\ProjectSetup\Models\Dependency;
 
-class InspiringCommand extends Command
+class AddCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'inspiring {name=Artisan}';
+    protected $signature = 'dependency:add {name} : the composer name of this dependency {--dev} : add only as dev-dependency';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display an inspiring quote';
+    protected $description = 'Add a new composer dependency to your scaffolding';
 
     /**
      * Execute the console command.
+     *
+     * @return void
      */
     public function handle(): void
     {
-        $this->info('Simplicity is the ultimate sophistication. - Leonardo da Vinci');
-
-        $this->notify("Hey {$this->argument('name')}", 'Enjoy the fresh air!');
+        Dependency::insert([
+            'name' => $this->argument('name'),
+            'dev' => $this->option('dev')
+        ]);
     }
 
     /**
      * Define the command's schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     *
+     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

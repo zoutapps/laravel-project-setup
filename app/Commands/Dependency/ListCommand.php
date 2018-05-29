@@ -1,40 +1,47 @@
 <?php
 
-namespace Zoutapps\Laravel\ProjectSetup\App\Commands;
+namespace Zoutapps\Laravel\ProjectSetup\Commands\Dependency;
 
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
+use Zoutapps\Laravel\ProjectSetup\Models\Dependency;
 
-class InspiringCommand extends Command
+class ListCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'inspiring {name=Artisan}';
+    protected $signature = 'dependency:list';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display an inspiring quote';
+    protected $description = 'List all currently registered dependencies';
 
     /**
      * Execute the console command.
+     *
+     * @return void
      */
     public function handle(): void
     {
-        $this->info('Simplicity is the ultimate sophistication. - Leonardo da Vinci');
+        $dependencies = Dependency::orderBy('name')->get();
 
-        $this->notify("Hey {$this->argument('name')}", 'Enjoy the fresh air!');
+        $this->table(['name', 'dev'], $dependencies->map(function($dependency) {
+            return [$dependency->name, $dependency->dev ? 'TRUE' : 'FALSE'];
+        }));
     }
 
     /**
      * Define the command's schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     *
+     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

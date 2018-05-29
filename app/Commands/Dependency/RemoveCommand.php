@@ -1,40 +1,43 @@
 <?php
 
-namespace Zoutapps\Laravel\ProjectSetup\App\Commands;
+namespace Zoutapps\Laravel\ProjectSetup\Commands\Dependency;
 
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
+use Zoutapps\Laravel\ProjectSetup\Models\Dependency;
 
-class InspiringCommand extends Command
+class RemoveCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'inspiring {name=Artisan}';
+    protected $signature = 'dependency:remove {name}';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display an inspiring quote';
+    protected $description = 'Remove a composer dependency from your scaffolding.';
 
     /**
      * Execute the console command.
+     *
+     * @return void
      */
     public function handle(): void
     {
-        $this->info('Simplicity is the ultimate sophistication. - Leonardo da Vinci');
-
-        $this->notify("Hey {$this->argument('name')}", 'Enjoy the fresh air!');
+        Dependency::where('name', $this->argument('name'))->delete();
     }
 
     /**
      * Define the command's schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     *
+     * @return void
      */
     public function schedule(Schedule $schedule): void
     {
