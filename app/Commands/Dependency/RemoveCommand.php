@@ -29,7 +29,7 @@ class RemoveCommand extends Command
      */
     public function handle(): void
     {
-        Dependency::where('name', $this->argument('name'))->delete();
+        Dependency::where('name', 'LIKE', $this->argument('name').'%')->delete();
     }
 
     /**

@@ -13,7 +13,10 @@ class AddCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'dependency:add {name} : the composer name of this dependency {--dev} : add only as dev-dependency';
+    protected $signature = 'dependency:add 
+                                {name} : the composer name of this dependency
+                                {group=custom} : the dependency group this should be installed for 
+                                {--dev} : add only as dev-dependency';
 
     /**
      * The description of the command.
@@ -31,7 +34,8 @@ class AddCommand extends Command
     {
         Dependency::insert([
             'name' => $this->argument('name'),
-            'dev' => $this->option('dev')
+            'dev' => $this->option('dev'),
+            'group' => $this->argument('group')
         ]);
     }
 

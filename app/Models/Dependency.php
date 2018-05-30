@@ -10,6 +10,7 @@ class Dependency extends Model
 
     protected $fillable = [
         'name',
-        'dev'
+        'dev',
+        'group'
     ];
 }

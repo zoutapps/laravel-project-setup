@@ -17,6 +17,7 @@ class CreateDependenciesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->boolean('dev')->default(false);
+            $table->string('group')->default('custom');
             $table->timestamps();
         });
     }

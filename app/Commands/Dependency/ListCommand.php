@@ -31,8 +31,8 @@ class ListCommand extends Command
     {
         $dependencies = Dependency::orderBy('name')->get();
 
-        $this->table(['name', 'dev'], $dependencies->map(function($dependency) {
-            return [$dependency->name, $dependency->dev ? 'TRUE' : 'FALSE'];
+        $this->table(['name', 'dev', 'group'], $dependencies->map(function($dependency) {
+            return [$dependency->name, $dependency->dev ? 'TRUE' : 'FALSE', $dependency->group];
         }));
     }
 
